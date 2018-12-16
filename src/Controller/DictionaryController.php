@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,7 +12,7 @@ use App\Entity\Country;
 use App\Entity\Region;
 use App\Form\DictionaryEdit;
 
-class DictionaryController extends Controller {
+class DictionaryController extends AbstractController {
 
     protected $dictionaryClasses = [
         'country' => Country::class,

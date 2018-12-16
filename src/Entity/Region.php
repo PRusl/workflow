@@ -13,7 +13,7 @@ class Region extends ADictionary {
     const ENTITY_NAME = 'Області';
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="subordinates")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
     protected $owner = null;

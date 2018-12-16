@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ title }}</h1>
+
+    <select title="{{ title }}">
+        {% for entity in entities %}
+            {% if entity.enable %}
+                <option value="{{ entity.id }}">{{ entity.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+    <ul>
+        {% for entity in entities %}
+            <li>
+                <a href="{{ entity.id }}">
+                    {{ entity.name }}{% if not entity.enable %}, вимкнено{% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <table>
+        <tr>
+            {% for field in fields %}
+                <th>{{ field }}</th>
+            {% endfor %}
+        </tr>
+    {% for entity in entities %}
+        <tr>
+            {% for field in fields %}
+                <td>{{ attribute(entity, field) }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+    <a href="{{ newEntity.id }}">
+        {{ newEntity.name }}
+    </a>
+
+    {{ form_start(formEdit) }}
+    {{ form_widget(formEdit) }}
+    {{ form_end(formEdit) }}
+</div>
+{% endblock %}

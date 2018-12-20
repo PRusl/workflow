@@ -10,13 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\MappedSuperclass()
  *
  */
-class ADictionary {
-
-    const ENABLE_NAME = 'Увімкнено';
-
-    const DEFAULT_NAME = 'За замовчуванням';
-
-    const ENTITY_NAME = 'Довідники';
+abstract class ADictionary {
 
     /**
      * @ORM\Id()
@@ -27,27 +21,12 @@ class ADictionary {
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $enable = true;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $useDefault = false;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $top = false;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ADirectory")
+     * @ORM\ManyToOne(targetEntity="ADictionary")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
     protected $owner = null;
@@ -60,14 +39,14 @@ class ADictionary {
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getSubordinates() {
         return $this->subordinates;
     }
 
     /**
-     * @param mixed $subordinate
+     * @param ADictionary $subordinate
      * @return $this
      */
     public function setSubordinates($subordinate) {
@@ -105,59 +84,26 @@ class ADictionary {
     }
 
     /**
-     * @return bool
-     */
-    public function isEnable() {
-        return $this->enable;
-    }
-
-    /**
-     * @param bool $enable
-     */
-    public function setEnable($enable) {
-        $this->enable = $enable;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isUseDefault() {
-        return $this->useDefault;
-    }
-
-    /**
-     * @param bool $useDefault
-     */
-    public function setUseDefault($useDefault) {
-        //todo: Create preUpdate Listener to set default only one
-        $this->useDefault = $useDefault;
-    }
-
-    /**
-     * @return mixed
+     * @return ADictionary
      */
     public function getOwner() {
         return $this->owner;
     }
 
     /**
-     * @param mixed $owner
+     * @param ADictionary $owner
+     * @return ADictionary
      */
     public function setOwner($owner) {
         $this->owner = $owner;
+
+        return $this;
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isTop() {
-        return $this->top;
-    }
-
-    /**
-     * @param bool $top
-     */
-    public function setTop($top) {
-        $this->top = $top;
+    public function __toString() {
+        return $this->name;
     }
 }

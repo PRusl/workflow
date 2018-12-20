@@ -1,11 +1,123 @@
-#easy_admin:
-#    entities:
-#        # List the entity class name you want to manage
-#        - App\Entity\Product
-#        - App\Entity\Category
-#        - App\Entity\User
 easy_admin:
+    disabled_actions: ['delete']
+    design:
+        menu:
+            - label: 'Addresses'
+              icon: 'home'
+              children:
+                - { label: 'Address', entity: 'Address' }
+                - label: 'Address components'
+                - { label: 'Buildings', entity: 'Building' }
+                - { label: 'Streets', entity: 'Street' }
+                - { label: 'Sectors', entity: 'Sector' }
+                - { label: 'Settlements', entity: 'Settlement' }
+                - { label: 'Districts', entity: 'District' }
+                - { label: 'Regions', entity: 'Region' }
+                - { label: 'Countries', entity: 'Country' }
+                - label: 'Types'
+                - { label: 'ApartmentTypes', entity: 'ApartmentType' }
+                - { label: 'FloorTypes', entity: 'FloorType' }
+                - { label: 'BuildingTypes', entity: 'BuildingType' }
+                - { label: 'StreetTypes', entity: 'StreetType' }
+                - { label: 'SettlementTypes', entity: 'SettlementType' }
+                - { label: 'DistrictTypes', entity: 'DistrictType' }
+                - { label: 'RegionTypes', entity: 'RegionType' }
+    show:
+        title: '%%entity_label%%'
+    edit:
+        title: '%%entity_label%%'
     entities:
-#        # List the entity class name you want to manage
-        - App\Entity\Country
-        - App\Entity\Region
+        Address:
+            class: App\Entity\Address\Address
+            list:
+                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+            edit:
+                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+            show:
+                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+            new:
+                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+        Building:
+            class:  App\Entity\Address\Building
+            list:
+                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+            edit:
+                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+            show:
+                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+            new:
+                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+        Street:
+            class:  App\Entity\Address\Street
+            list:
+                fields: ['owner', 'type', 'name', 'subordinates']
+            edit:
+                fields: ['owner', 'type', 'name', 'subordinates']
+            show:
+                fields: ['owner', 'type', 'name', 'subordinates']
+            new:
+                fields: ['owner', 'type', 'name', 'subordinates']
+        Sector:
+            class:  App\Entity\Address\Sector
+            list:
+                fields: ['owner', 'name', 'subordinates']
+            edit:
+                fields: ['owner', 'name', 'subordinates']
+            show:
+                fields: ['owner', 'name', 'subordinates']
+            new:
+                fields: ['owner', 'name', 'subordinates']
+        Settlement:
+            class:  App\Entity\Address\Settlement
+            list:
+                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
+            edit:
+                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
+            show:
+                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
+            new:
+                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
+        District:
+            class:  App\Entity\Address\District
+            list:
+                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
+            edit:
+                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
+            show:
+                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
+            new:
+                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
+        Region:
+            class:  App\Entity\Address\Region
+            list:
+                fields: ['owner', 'name', 'type', 'subordinates']
+            edit:
+                fields: ['owner', 'name', 'type', 'subordinates']
+            show:
+                fields: ['owner', 'name', 'type', 'subordinates']
+            new:
+                fields: ['owner', 'name', 'type', 'subordinates']
+        Country:
+            class:  App\Entity\Address\Country
+            list:
+                fields: ['name', 'subordinates']
+            edit:
+                fields: ['name', 'subordinates']
+            show:
+                fields: ['name', 'subordinates']
+            new:
+                fields: ['name', 'subordinates']
+        ApartmentType:
+            class:  App\Entity\Address\ApartmentType
+        FloorType:
+            class:  App\Entity\Address\FloorType
+        BuildingType:
+            class:  App\Entity\Address\BuildingType
+        StreetType:
+            class:  App\Entity\Address\StreetType
+        SettlementType:
+            class:  App\Entity\Address\SettlementType
+        DistrictType:
+            class:  App\Entity\Address\DistrictType
+        RegionType:
+            class:  App\Entity\Address\RegionType

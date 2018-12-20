@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\ADictionary;
-use App\Entity\Country;
-use App\Entity\Region;
+use App\Entity\Address\Country;
+use App\Entity\Address\Region;
 use App\Form\DictionaryEdit;
 
 class DictionaryController extends AbstractController {

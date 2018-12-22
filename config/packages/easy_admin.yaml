@@ -22,6 +22,9 @@ easy_admin:
                 - { label: 'SettlementTypes', entity: 'SettlementType' }
                 - { label: 'DistrictTypes', entity: 'DistrictType' }
                 - { label: 'RegionTypes', entity: 'RegionType' }
+            - label: 'Users'
+              icon: 'users'
+              entity: 'User'
     show:
         title: '%%entity_label%%'
     edit:
@@ -121,3 +124,23 @@ easy_admin:
             class:  App\Entity\Address\DistrictType
         RegionType:
             class:  App\Entity\Address\RegionType
+        User:
+            class:  App\Entity\User
+            list:
+                fields:
+                  - username
+                  - password
+            edit:
+                fields:
+                  - username
+                  - password
+                  - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+            show:
+                fields:
+                  - username
+                  - password
+            new:
+                fields:
+                  - username
+                  - password
+                  - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }

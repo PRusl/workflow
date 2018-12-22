@@ -51,4 +51,13 @@ return array(
     'DistrictTypes'   => 'Типи району',
     'RegionType'      => 'Тип області',
     'RegionTypes'     => 'Типи області',
+
+    'Users'    => 'Користувачі',
+    'User'     => 'Користувач',
+    'Username' => 'Логін',
+    'Password' => 'Пароль',
+    'Roles'    => 'Ролі користувача',
+
+    'ROLE_USER'  => 'Користувач',
+    'ROLE_ADMIN' => 'Адміністратор'
 );

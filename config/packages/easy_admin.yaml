@@ -126,21 +126,20 @@ easy_admin:
             class:  App\Entity\Address\RegionType
         User:
             class:  App\Entity\User
+            controller: App\Controller\UserController
             list:
                 fields:
                   - username
-                  - password
             edit:
                 fields:
                   - username
-                  - password
+                  - { property: 'password', type: 'password' }
                   - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
             show:
                 fields:
                   - username
-                  - password
             new:
                 fields:
                   - username
-                  - password
+                  - { property: 'password', type: 'password' }
                   - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }

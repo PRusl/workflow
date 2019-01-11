@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity\Address;
 
+use App\Entity\Contact\FirmAddress;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,6 +22,11 @@ class Address extends AAddress {
     protected $owner = null;
 
     protected $name = ' ';
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Contact\FirmAddress", mappedBy="address")
+     */
+    protected $firms;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
@@ -50,6 +57,51 @@ class Address extends AAddress {
     protected $district;
     protected $region;
     protected $country;
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->firms = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getFirms() {
+        return $this->firms;
+    }
+
+    /**
+     * @param FirmAddress $firmAddress
+     * @return Address
+     */
+    public function addFirm($firmAddress) {
+        if ($this->firms->contains($firmAddress)) {
+            return $this;
+        }
+
+        if ($this->firms->add($firmAddress)) {
+            $firmAddress->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param FirmAddress $firmAddress
+     * @return Address
+     */
+    public function removeFirm($firmAddress) {
+        if (!$this->firms->contains($firmAddress)) {
+            return $this;
+        }
+
+        if ($this->firms->removeElement($firmAddress)) {
+            $firmAddress->setAddress(null);
+        }
+
+        return $this;
+    }
 
     public function getAddressComponents() {
         $this->building   = $this->getOwner();

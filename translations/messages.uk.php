@@ -6,6 +6,21 @@ return array(
 
     'action.new'   => 'Створити',
 
+    'Contacts' => 'Контакти',
+    'Firm'     => 'Організація',
+    'Firms'    => 'Організації',
+    'Person'   => 'Особа',
+    'Persons'  => 'Особи',
+
+    'FirmTypes'   => 'Типи фірм',
+    'PersonTypes' => 'Типи осіб',
+
+    'Code'  => 'Код',
+    'Ipn'   => 'ІПН',
+
+    'Name of address'  => 'Назва адреси',
+    'Name of relation' => 'Назва зв\'язку',
+
     'Owner'        => 'Розташування',
     'Subordinates' => 'Містить елементи',
     'Name'         => 'Найменування',
@@ -16,6 +31,7 @@ return array(
     'Apartment'      => 'Приміщення',
     'Floor'          => 'Поверх',
     'Short name'     => 'Коротка назва',
+    'Full name'      => 'Повна назва',
 
     'Address components' => 'Складові адреси',
     'Country'     => 'Країна',
@@ -59,5 +75,10 @@ return array(
     'Roles'    => 'Ролі користувача',
 
     'ROLE_USER'  => 'Користувач',
-    'ROLE_ADMIN' => 'Адміністратор'
+    'ROLE_ADMIN' => 'Адміністратор',
+
+    'paginator.results'     => 'результат',
+    'confirm_modal.content' => 'Ви впевнені?',
+    'confirm_modal.action'  => 'Підтвердіть',
+    'label.null'            => 'немає'
 );

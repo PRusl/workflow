@@ -1,11 +1,19 @@
 easy_admin:
+    site_name: 'WORKFLOW'
     disabled_actions: ['delete']
     design:
         menu:
+            - label: 'Contacts'
+              children:
+                - { label: 'Firms', entity: 'Firm' }
+                - { label: 'Persons', entity: 'Person' }
+                - label: 'Types'
+                - { label: 'FirmTypes', entity: 'FirmType' }
+                - { label: 'PersonTypes', entity: 'PersonType' }
             - label: 'Addresses'
               icon: 'home'
               children:
-                - { label: 'Address', entity: 'Address' }
+                - { label: 'Addresses', entity: 'Address' }
                 - label: 'Address components'
                 - { label: 'Buildings', entity: 'Building' }
                 - { label: 'Streets', entity: 'Street' }
@@ -30,86 +38,130 @@ easy_admin:
     edit:
         title: '%%entity_label%%'
     entities:
+        Firm:
+            class: App\Entity\Contact\Firm
+            form:
+                fields:
+                  - 'shortName'
+                  - 'fullName'
+                  - 'code'
+                  - 'ipn'
+                  - 'type'
+                  - { type: 'section', label: 'Addresses', icon: 'address-book' }
+                  - { property: 'addresses', label: 'Addresses', type: embedded_list }
+                  - { type: 'section', label: 'Persons', icon: 'users' }
+                  - { property: 'persons', label: 'Persons', type: embedded_list }
+            new:
+                fields:
+                  - { property: 'addresses', label: 'Addresses', type: embedded_list, type_options: { entity: FirmAddress, filters: { 'entity.firm': 0 } } }
+                  - { property: 'persons', label: 'Persons', type: embedded_list, type_options: { entity: FirmPerson, filters: { 'entity.firm': 0 } } }
+        FirmType:
+            class: App\Entity\Contact\FirmType
+        Person:
+            class: App\Entity\Contact\Person
+            form:
+                fields:
+                  - 'shortName'
+                  - 'fullName'
+                  - 'type'
+                  - { type: 'section', label: 'Firms', icon: 'building' }
+                  - { property: 'firms', label: 'Firms', type: embedded_list }
+            new:
+                fields:
+                  - { property: 'firms', label: 'Firms', type: embedded_list, type_options: { entity: FirmPerson, filters: { 'entity.person': 0 } } }
+        PersonType:
+            class: App\Entity\Contact\PersonType
+        FirmAddress:
+            class: App\Entity\Contact\FirmAddress
+            label: 'Addresses'
+            list:
+                fields: ['address', { property: 'name', label: 'Name of address' }, 'firm']
+            show:
+                fields: ['address', { property: 'name', label: 'Name of address' }, 'firm']
+            form:
+                fields: ['address', { property: 'name', label: 'Name of address' }, 'firm']
+        FirmPerson:
+            class: App\Entity\Contact\FirmPerson
+            list:
+                fields: ['person', { property: 'name', label: 'Name of relation' }, 'firm']
+            show:
+                fields: ['person', { property: 'name', label: 'Name of relation' }, 'firm']
+            form:
+                fields: ['person', { property: 'name', label: 'Name of relation' }, 'firm']
         Address:
             class: App\Entity\Address\Address
             list:
                 fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
-            edit:
-                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
             show:
                 fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+            form:
+                fields:
+                  - 'owner'
+                  - 'floor'
+                  - 'floorType'
+                  - 'apartment'
+                  - 'apartmentType'
+                  - { type: 'section', label: 'Firms', icon: 'building' }
+                  - { property: 'firms', label: 'Firms', type: embedded_list }
             new:
-                fields: ['owner', 'floor', 'floorType', 'apartment', 'apartmentType']
+                fields:
+                  - { property: 'firms', label: 'Firms', type: embedded_list, type_options: { entity: FirmAddress, filters: { 'entity.address': 0 } } }
         Building:
             class:  App\Entity\Address\Building
             list:
                 fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
-            edit:
-                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
             show:
                 fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
-            new:
-                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+            form:
+                fields: ['zip', 'owner', 'type', 'name', 'publicName', { property: 'subordinates', type_options: { by_reference: false } }]
         Street:
             class:  App\Entity\Address\Street
             list:
                 fields: ['owner', 'type', 'name', 'subordinates']
-            edit:
-                fields: ['owner', 'type', 'name', 'subordinates']
             show:
                 fields: ['owner', 'type', 'name', 'subordinates']
-            new:
-                fields: ['owner', 'type', 'name', 'subordinates']
+            form:
+                fields: ['owner', 'type', 'name', { property: 'subordinates', type_options: { by_reference: false } }]
         Sector:
             class:  App\Entity\Address\Sector
             list:
                 fields: ['owner', 'name', 'subordinates']
-            edit:
-                fields: ['owner', 'name', 'subordinates']
             show:
                 fields: ['owner', 'name', 'subordinates']
             new:
-                fields: ['owner', 'name', 'subordinates']
+                fields: ['owner', 'name', { property: 'subordinates', type_options: { by_reference: false } }]
         Settlement:
             class:  App\Entity\Address\Settlement
             list:
                 fields: ['zip', 'owner', 'type', 'name', 'subordinates']
-            edit:
-                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
             show:
                 fields: ['zip', 'owner', 'type', 'name', 'subordinates']
-            new:
-                fields: ['zip', 'owner', 'type', 'name', 'subordinates']
+            form:
+                fields: ['zip', 'owner', 'type', 'name', { property: 'subordinates', type_options: { by_reference: false } }]
         District:
             class:  App\Entity\Address\District
             list:
                 fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
-            edit:
-                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
             show:
                 fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
-            new:
-                fields: ['owner', 'name', 'type', 'subordinates', 'showInAddress']
+            form:
+                fields: ['owner', 'name', 'type', { property: 'subordinates', type_options: { by_reference: false } }, 'showInAddress']
         Region:
             class:  App\Entity\Address\Region
             list:
                 fields: ['owner', 'name', 'type', 'subordinates']
-            edit:
-                fields: ['owner', 'name', 'type', 'subordinates']
             show:
                 fields: ['owner', 'name', 'type', 'subordinates']
-            new:
-                fields: ['owner', 'name', 'type', 'subordinates']
+            form:
+                fields: ['owner', 'name', 'type', { property: 'subordinates', type_options: { by_reference: false } }]
         Country:
             class:  App\Entity\Address\Country
             list:
                 fields: ['name', 'subordinates']
-            edit:
-                fields: ['name', 'subordinates']
             show:
                 fields: ['name', 'subordinates']
-            new:
-                fields: ['name', 'subordinates']
+            form:
+                fields: ['name', { property: 'subordinates', type_options: { by_reference: false } }]
         ApartmentType:
             class:  App\Entity\Address\ApartmentType
         FloorType:

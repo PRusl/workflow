@@ -26,7 +26,7 @@ abstract class ADictionary {
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ADictionary")
+     * @ORM\ManyToOne(targetEntity="ADictionary", inversedBy="subordinates", cascade={"all"})
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
     protected $owner = null;
@@ -49,11 +49,29 @@ abstract class ADictionary {
      * @param ADictionary $subordinate
      * @return $this
      */
-    public function setSubordinates($subordinate) {
-        $this->subordinates[] = $subordinate;
+    public function addSubordinate($subordinate) {
+        if ($this->subordinates->contains($subordinate)) {
+            return $this;
+        }
 
-        if ($subordinate->getOwner() !== $this) {
+        if ($this->subordinates->add($subordinate)) {
             $subordinate->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ADictionary $subordinate
+     * @return $this
+     */
+    public function removeSubordinate($subordinate) {
+        if (!$this->subordinates->contains($subordinate)) {
+            return $this;
+        }
+
+        if ($this->subordinates->removeElement($subordinate)) {
+            $subordinate->setOwner(null);
         }
 
         return $this;

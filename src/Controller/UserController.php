@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use AlterPHP\EasyAdminExtensionBundle\Controller\EasyAdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20181217104913 extends AbstractMigration
 {
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
@@ -32,7 +32,7 @@ final class Version20181217104913 extends AbstractMigration
         $this->addSql('ALTER TABLE settlements ADD CONSTRAINT FK_7BF3172C54C8C93 FOREIGN KEY (type_id) REFERENCES settlement_types (id)');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');

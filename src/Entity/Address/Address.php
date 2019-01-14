@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use App\Entity\Contact\FirmAddress;
@@ -10,9 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\Table(name="addresses")
  */
-class Address extends AAddress {
+class Address extends AAddress
+{
 
-    const FLOOR_NAME  = 'floor';
+    const FLOOR_NAME = 'floor';
 
     /**
      * @Assert\NotBlank()
@@ -58,7 +60,8 @@ class Address extends AAddress {
     protected $region;
     protected $country;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $this->firms = new ArrayCollection();
@@ -67,7 +70,8 @@ class Address extends AAddress {
     /**
      * @return ArrayCollection
      */
-    public function getFirms() {
+    public function getFirms()
+    {
         return $this->firms;
     }
 
@@ -75,7 +79,8 @@ class Address extends AAddress {
      * @param FirmAddress $firmAddress
      * @return Address
      */
-    public function addFirm($firmAddress) {
+    public function addFirm($firmAddress)
+    {
         if ($this->firms->contains($firmAddress)) {
             return $this;
         }
@@ -91,7 +96,8 @@ class Address extends AAddress {
      * @param FirmAddress $firmAddress
      * @return Address
      */
-    public function removeFirm($firmAddress) {
+    public function removeFirm($firmAddress)
+    {
         if (!$this->firms->contains($firmAddress)) {
             return $this;
         }
@@ -103,14 +109,15 @@ class Address extends AAddress {
         return $this;
     }
 
-    public function getAddressComponents() {
-        $this->building   = $this->getOwner();
-        $this->street     = $this->building ? $this->building->getOwner() : null;
-        $this->sector     = $this->street ? $this->street->getOwner() : null;
+    public function getAddressComponents()
+    {
+        $this->building = $this->getOwner();
+        $this->street = $this->building ? $this->building->getOwner() : null;
+        $this->sector = $this->street ? $this->street->getOwner() : null;
         $this->settlement = $this->sector ? $this->sector->getOwner() : null;
-        $this->district   = $this->settlement ? $this->settlement->getOwner() : null;
-        $this->region     = $this->district ? $this->district->getOwner() : null;
-        $this->country    = $this->region ? $this->region->getOwner() : null;
+        $this->district = $this->settlement ? $this->settlement->getOwner() : null;
+        $this->region = $this->district ? $this->district->getOwner() : null;
+        $this->country = $this->region ? $this->region->getOwner() : null;
 
         return $this;
     }
@@ -118,49 +125,56 @@ class Address extends AAddress {
     /**
      * @return mixed
      */
-    public function getApartment() {
+    public function getApartment()
+    {
         return $this->apartment;
     }
 
     /**
      * @param mixed $apartment
      */
-    public function setApartment($apartment) {
+    public function setApartment($apartment)
+    {
         $this->apartment = $apartment;
     }
 
     /**
      * @return ApartmentType
      */
-    public function getApartmentType() {
+    public function getApartmentType()
+    {
         return $this->apartmentType;
     }
 
     /**
      * @param ApartmentType $apartmentType
      */
-    public function setApartmentType($apartmentType) {
+    public function setApartmentType($apartmentType)
+    {
         $this->apartmentType = $apartmentType;
     }
 
     /**
      * @return string
      */
-    public function getFloor() {
+    public function getFloor()
+    {
         return $this->floor;
     }
 
     /**
      * @param string $floor
      */
-    public function setFloor($floor) {
+    public function setFloor($floor)
+    {
         $this->floor = $floor;
     }
 
     /**
      * @return Building
      */
-    public function getBuilding() {
+    public function getBuilding()
+    {
         if (!isset($this->building)) {
             $this->getAddressComponents();
         }
@@ -171,7 +185,8 @@ class Address extends AAddress {
     /**
      * @return Street
      */
-    public function getStreet() {
+    public function getStreet()
+    {
         if (!isset($this->street)) {
             $this->getAddressComponents();
         }
@@ -182,7 +197,8 @@ class Address extends AAddress {
     /**
      * @return Sector
      */
-    public function getSector() {
+    public function getSector()
+    {
         if (!isset($this->sector)) {
             $this->getAddressComponents();
         }
@@ -193,7 +209,8 @@ class Address extends AAddress {
     /**
      * @return Settlement
      */
-    public function getSettlement() {
+    public function getSettlement()
+    {
         if (!isset($this->settlement)) {
             $this->getAddressComponents();
         }
@@ -204,7 +221,8 @@ class Address extends AAddress {
     /**
      * @return District
      */
-    public function getDistrict() {
+    public function getDistrict()
+    {
         if (!isset($this->district)) {
             $this->getAddressComponents();
         }
@@ -215,7 +233,8 @@ class Address extends AAddress {
     /**
      * @return Region
      */
-    public function getRegion() {
+    public function getRegion()
+    {
         if (!isset($this->region)) {
             $this->getAddressComponents();
         }
@@ -226,7 +245,8 @@ class Address extends AAddress {
     /**
      * @return Country
      */
-    public function getCountry() {
+    public function getCountry()
+    {
         if (!isset($this->country)) {
             $this->getAddressComponents();
         }
@@ -237,7 +257,8 @@ class Address extends AAddress {
     /**
      * @return string
      */
-    public function getZip() {
+    public function getZip()
+    {
         return ($this->getBuilding() ? $this->getBuilding()->getZip() : null)
             ?? ($this->getSettlement() ? $this->getSettlement()->getZip() : null)
             ?? '';
@@ -246,21 +267,24 @@ class Address extends AAddress {
     /**
      * @return FloorType
      */
-    public function getFloorType() {
+    public function getFloorType()
+    {
         return $this->floorType;
     }
 
     /**
      * @param FloorType $floorType
      */
-    public function setFloorType($floorType) {
+    public function setFloorType($floorType)
+    {
         $this->floorType = $floorType;
     }
 
     /**
      * @return string
      */
-    protected function getApartmentWithType() {
+    protected function getApartmentWithType()
+    {
         $apartmentType = $this->getApartmentType()
             ? $this->getApartmentType()->getShortName() . ' '
             : '';
@@ -275,7 +299,8 @@ class Address extends AAddress {
     /**
      * @return string
      */
-    protected function getFloorWithType() {
+    protected function getFloorWithType()
+    {
         $parts = [
             $this->getFloor(),
             $this->getFloorType(),
@@ -287,7 +312,8 @@ class Address extends AAddress {
     /**
      * @return string
      */
-    public function getMailingAddress() {
+    public function getMailingAddress()
+    {
         $zip = $this->getZip();
         $zip = isset($zip) ? "$zip " : '';
 
@@ -302,7 +328,8 @@ class Address extends AAddress {
     /**
      * @return string
      */
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         $floor = $this->getFloorWithType();
         $floor = isset($floor) ? ", $floor" : '';
 

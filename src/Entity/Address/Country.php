@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="countries")
  */
-class Country extends AAddress {
+class Country extends AAddress
+{
 
     protected $owner = null;
 
@@ -19,14 +21,16 @@ class Country extends AAddress {
     /**
      * @return string
      */
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         return '';
     }
 
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getName();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,14 +22,16 @@ class Person extends AContact
      */
     protected $firms;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->firms = new ArrayCollection();
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getFirms() {
+    public function getFirms()
+    {
         return $this->firms;
     }
 
@@ -36,7 +39,8 @@ class Person extends AContact
      * @param FirmPerson $contactRelation
      * @return Person
      */
-    public function addFirm($contactRelation) {
+    public function addFirm($contactRelation)
+    {
         if ($this->firms->contains($contactRelation)) {
             return $this;
         }
@@ -52,7 +56,8 @@ class Person extends AContact
      * @param FirmPerson $contactRelation
      * @return Person
      */
-    public function removeFirm($contactRelation) {
+    public function removeFirm($contactRelation)
+    {
         if (!$this->firms->contains($contactRelation)) {
             return $this;
         }

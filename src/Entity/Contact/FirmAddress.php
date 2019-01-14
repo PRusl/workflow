@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use App\Entity\Address\Address;
@@ -26,7 +27,8 @@ class FirmAddress extends AType
     /**
      * @return Firm
      */
-    public function getFirm() {
+    public function getFirm()
+    {
         return $this->firm;
     }
 
@@ -34,7 +36,8 @@ class FirmAddress extends AType
      * @param Firm $firm
      * @return FirmAddress
      */
-    public function setFirm($firm) {
+    public function setFirm($firm)
+    {
         $this->firm = $firm;
 
         return $this;
@@ -43,7 +46,8 @@ class FirmAddress extends AType
     /**
      * @return Address
      */
-    public function getAddress() {
+    public function getAddress()
+    {
         return $this->address;
     }
 
@@ -51,13 +55,15 @@ class FirmAddress extends AType
      * @param Address $address
      * @return FirmAddress
      */
-    public function setAddress($address) {
+    public function setAddress($address)
+    {
         $this->address = $address;
 
         return $this;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getAddress() . ' is ' . parent::__toString() . ' address for ' . $this->getFirm();
     }
 }

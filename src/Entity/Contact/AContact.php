@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -35,53 +36,61 @@ abstract class AContact
     /**
      * @return string
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getShortName() {
+    public function getShortName()
+    {
         return $this->shortName;
     }
 
     /**
      * @param string $shortName
      */
-    public function setShortName($shortName) {
+    public function setShortName($shortName)
+    {
         $this->shortName = $shortName;
     }
 
     /**
      * @return string
      */
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->fullName;
     }
 
     /**
      * @param string $fullName
      */
-    public function setFullName($fullName) {
+    public function setFullName($fullName)
+    {
         $this->fullName = $fullName;
     }
 
     /**
      * @return AType
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
     /**
      * @param AType $type
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getShortName();
     }
 }

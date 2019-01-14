@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -25,32 +26,37 @@ class FirmPerson extends AType
     /**
      * @return Firm
      */
-    public function getFirm() {
+    public function getFirm()
+    {
         return $this->firm;
     }
 
     /**
      * @param Firm $firm
      */
-    public function setFirm($firm) {
+    public function setFirm($firm)
+    {
         $this->firm = $firm;
     }
 
     /**
      * @return Person
      */
-    public function getPerson() {
+    public function getPerson()
+    {
         return $this->person;
     }
 
     /**
      * @param Person $person
      */
-    public function setPerson($person) {
+    public function setPerson($person)
+    {
         $this->person = $person;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getPerson() . ' is ' . parent::__toString() . ' for ' . $this->getFirm();
     }
 }

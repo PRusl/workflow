@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="buildings")
  */
-class Building extends AAddress {
+class Building extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="Street", inversedBy="subordinates")
@@ -39,32 +41,37 @@ class Building extends AAddress {
     /**
      * @return string
      */
-    public function getZip() {
+    public function getZip()
+    {
         return $this->zip;
     }
 
     /**
      * @param string $zip
      */
-    public function setZip($zip) {
+    public function setZip($zip)
+    {
         $this->zip = $zip;
     }
 
     /**
      * @return string
      */
-    public function getPublicName() {
+    public function getPublicName()
+    {
         return $this->publicName;
     }
 
     /**
      * @param string $publicName
      */
-    public function setPublicName($publicName) {
+    public function setPublicName($publicName)
+    {
         $this->publicName = $publicName;
     }
 
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         return $this->getPublicName()
             ? parent::getRoadAddress() . ', ' . $this->getPublicName()
             : parent::getRoadAddress();

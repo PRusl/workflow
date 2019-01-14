@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="districts")
  */
-class District extends AAddress {
+class District extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="Region", inversedBy="subordinates")
@@ -34,21 +36,24 @@ class District extends AAddress {
     /**
      * @return bool
      */
-    public function isShowInAddress() {
-        return (bool) $this->showInAddress;
+    public function isShowInAddress()
+    {
+        return (bool)$this->showInAddress;
     }
 
     /**
      * @param bool $showInAddress
      */
-    public function setShowInAddress($showInAddress) {
+    public function setShowInAddress($showInAddress)
+    {
         $this->showInAddress = $showInAddress;
     }
 
     /**
      * @return string
      */
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->getShortName()
             ? $this->getName() . ' ' . $this->getShortName()
             : $this->getName();
@@ -57,7 +62,8 @@ class District extends AAddress {
     /**
      * @return string
      */
-    public function getMailingAddress() {
+    public function getMailingAddress()
+    {
         if ($this->isShowInAddress()) {
             return parent::getMailingAddress();
         }
@@ -70,7 +76,8 @@ class District extends AAddress {
     /**
      * @return string
      */
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         if ($this->isShowInAddress()) {
             return parent::getRoadAddress();
         }
@@ -83,7 +90,8 @@ class District extends AAddress {
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return parent::getRoadAddress();
     }
 }

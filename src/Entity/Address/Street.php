@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="streets")
  */
-class Street extends AAddress {
+class Street extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="Sector", inversedBy="subordinates")

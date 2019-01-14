@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="settlements")
  */
-class Settlement extends AAddress {
+class Settlement extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="District", inversedBy="subordinates")
@@ -34,14 +36,16 @@ class Settlement extends AAddress {
     /**
      * @return string
      */
-    public function getZip() {
+    public function getZip()
+    {
         return $this->zip;
     }
 
     /**
      * @param string $zip
      */
-    public function setZip($zip) {
+    public function setZip($zip)
+    {
         $this->zip = $zip;
     }
 }

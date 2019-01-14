@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="sectors")
  */
-class Sector extends AAddress {
+class Sector extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="Settlement", inversedBy="subordinates")
@@ -23,14 +25,16 @@ class Sector extends AAddress {
     /**
      * @return string
      */
-    public function getMailingAddress() {
+    public function getMailingAddress()
+    {
         return $this->getOwner() ? $this->getOwner()->getMailingAddress() : '';
     }
 
     /**
      * @return string
      */
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         $owner = $this->getOwner();
 
         if ($owner && count($owner->getSubordinates()) > 1) {

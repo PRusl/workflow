@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="regions")
  */
-class Region extends AAddress {
+class Region extends AAddress
+{
 
     /**
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="subordinates")
@@ -29,7 +31,8 @@ class Region extends AAddress {
     /**
      * @return string
      */
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->getShortName()
             ? $this->getName() . ' ' . $this->getShortName()
             : $this->getName();

@@ -1,37 +1,43 @@
 <?php
+
 namespace App\Entity\Address;
 
 use App\Entity\ADictionary;
 
-abstract class AAddress extends ADictionary {
+abstract class AAddress extends ADictionary
+{
 
     protected $type = null;
 
     /**
      * @return AAddress
      */
-    public function getOwner() {
+    public function getOwner()
+    {
         return $this->owner;
     }
 
     /**
      * @return AAddressType
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
     /**
      * @param AAddressType $type
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
     /**
      * @return string
      */
-    public function getShortName() {
+    public function getShortName()
+    {
         return $this->getType()
             ? $this->getType()->getShortName()
             : '';
@@ -40,7 +46,8 @@ abstract class AAddress extends ADictionary {
     /**
      * @return string
      */
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->getShortName()
             ? $this->getShortName() . ' ' . $this->getName()
             : $this->getName();
@@ -49,7 +56,8 @@ abstract class AAddress extends ADictionary {
     /**
      * @return string
      */
-    public function getMailingAddress() {
+    public function getMailingAddress()
+    {
         return $this->getOwner()
             ? $this->getOwner()->getMailingAddress() . ', ' . $this->getFullName()
             : $this->getFullName();
@@ -58,13 +66,15 @@ abstract class AAddress extends ADictionary {
     /**
      * @return string
      */
-    public function getRoadAddress() {
+    public function getRoadAddress()
+    {
         return $this->getOwner() && $this->getOwner()->getRoadAddress()
             ? $this->getOwner()->getRoadAddress() . ', ' . $this->getFullName()
             : $this->getFullName();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getRoadAddress();
     }
 }

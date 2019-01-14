@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -26,14 +27,16 @@ abstract class AType
     /**
      * @return mixed
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -41,7 +44,8 @@ abstract class AType
      * @param string $name
      * @return AType
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -50,7 +54,8 @@ abstract class AType
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 }

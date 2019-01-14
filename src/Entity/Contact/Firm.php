@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Entity\Contact;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -39,43 +40,50 @@ class Firm extends AContact
      */
     protected $persons;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->addresses = new ArrayCollection();
-        $this->persons   = new ArrayCollection();
+        $this->persons = new ArrayCollection();
     }
 
     /**
      * @return int
      */
-    public function getCode() {
+    public function getCode()
+    {
         return $this->code;
     }
 
     /**
      * @param int $code
      */
-    public function setCode($code) {
+    public function setCode($code)
+    {
         $this->code = $code;
     }
 
     /**
      * @return int
      */
-    public function getIpn() {
+    public function getIpn()
+    {
         return $this->ipn;
     }
 
     /**
      * @param int $ipn
      */
-    public function setIpn($ipn) {
+    public function setIpn($ipn)
+    {
         $this->ipn = $ipn;
     }
+
     /**
      * @return ArrayCollection
      */
-    public function getAddresses() {
+    public function getAddresses()
+    {
         return $this->addresses;
     }
 
@@ -83,7 +91,8 @@ class Firm extends AContact
      * @param FirmAddress $firmAddress
      * @return Firm
      */
-    public function addAddress($firmAddress) {
+    public function addAddress($firmAddress)
+    {
         if ($this->addresses->contains($firmAddress)) {
             return $this;
         }
@@ -99,7 +108,8 @@ class Firm extends AContact
      * @param FirmAddress $firmAddress
      * @return Firm
      */
-    public function removeAddress($firmAddress) {
+    public function removeAddress($firmAddress)
+    {
         if (!$this->addresses->contains($firmAddress)) {
             return $this;
         }
@@ -114,7 +124,8 @@ class Firm extends AContact
     /**
      * @return ArrayCollection
      */
-    public function getPersons() {
+    public function getPersons()
+    {
         return $this->persons;
     }
 
@@ -122,7 +133,8 @@ class Firm extends AContact
      * @param FirmPerson $firmPerson
      * @return Firm
      */
-    public function addPerson($firmPerson) {
+    public function addPerson($firmPerson)
+    {
         if ($this->persons->contains($firmPerson)) {
             return $this;
         }
@@ -138,7 +150,8 @@ class Firm extends AContact
      * @param FirmPerson $firmPerson
      * @return Firm
      */
-    public function removePerson($firmPerson) {
+    public function removePerson($firmPerson)
+    {
         if (!$this->persons->contains($firmPerson)) {
             return $this;
         }

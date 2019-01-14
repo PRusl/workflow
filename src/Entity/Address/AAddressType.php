@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Entity\Address;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-abstract class AAddressType {
+abstract class AAddressType
+{
 
     /**
      * @ORM\Id()
@@ -27,39 +29,45 @@ abstract class AAddressType {
     /**
      * @return string
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * @param string $name
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getShortName() {
+    public function getShortName()
+    {
         return $this->shortName;
     }
 
     /**
      * @param string $shortName
      */
-    public function setShortName($shortName) {
+    public function setShortName($shortName)
+    {
         $this->shortName = $shortName;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 }

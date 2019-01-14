@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,7 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\MappedSuperclass()
  *
  */
-abstract class ADictionary {
+abstract class ADictionary
+{
 
     /**
      * @ORM\Id()
@@ -34,14 +36,16 @@ abstract class ADictionary {
     protected $subordinates = null;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->subordinates = new ArrayCollection();
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getSubordinates() {
+    public function getSubordinates()
+    {
         return $this->subordinates;
     }
 
@@ -49,7 +53,8 @@ abstract class ADictionary {
      * @param ADictionary $subordinate
      * @return $this
      */
-    public function addSubordinate($subordinate) {
+    public function addSubordinate($subordinate)
+    {
         if ($this->subordinates->contains($subordinate)) {
             return $this;
         }
@@ -65,7 +70,8 @@ abstract class ADictionary {
      * @param ADictionary $subordinate
      * @return $this
      */
-    public function removeSubordinate($subordinate) {
+    public function removeSubordinate($subordinate)
+    {
         if (!$this->subordinates->contains($subordinate)) {
             return $this;
         }
@@ -80,14 +86,16 @@ abstract class ADictionary {
     /**
      * @return mixed
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -95,7 +103,8 @@ abstract class ADictionary {
      * @param string $name
      * @return ADictionary
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -104,7 +113,8 @@ abstract class ADictionary {
     /**
      * @return ADictionary
      */
-    public function getOwner() {
+    public function getOwner()
+    {
         return $this->owner;
     }
 
@@ -112,7 +122,8 @@ abstract class ADictionary {
      * @param ADictionary $owner
      * @return ADictionary
      */
-    public function setOwner($owner) {
+    public function setOwner($owner)
+    {
         $this->owner = $owner;
 
         return $this;
@@ -121,7 +132,8 @@ abstract class ADictionary {
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 }

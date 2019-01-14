@@ -1,6 +1,8 @@
 <?php
 
 return array(
+    'Workflow - Clients' => 'Робочий процес - Клієнти ',
+
     'Address'     => 'Адреса',
     'Addresses'   => 'Адреси',
 
@@ -11,6 +13,9 @@ return array(
     'Firms'    => 'Організації',
     'Person'   => 'Особа',
     'Persons'  => 'Особи',
+
+    'FirmPerson'  => 'Організація - Особа',
+    'FirmAddress' => 'Організація - Адреса',
 
     'FirmTypes'   => 'Типи фірм',
     'PersonTypes' => 'Типи осіб',

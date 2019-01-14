@@ -1,5 +1,5 @@
 easy_admin:
-    site_name: 'WORKFLOW'
+    site_name: 'Workflow - Clients'
     disabled_actions: ['delete']
     design:
         menu:

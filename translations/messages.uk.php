@@ -1,6 +1,17 @@
 <?php
 
 return array(
+    'Log in'         => 'Вхід до системи',
+    'Please sign in' => 'Будь ласка, введіть ім\'я та пароль',
+    'Remember me'    => 'Запам\'ятати мене',
+    'Sign in'        => 'Увійти',
+    'Username'       => 'Ім\'я',
+    'Password'       => 'Пароль',
+
+    'Username could not be found.' => 'Користувач не знайдений.',
+    'Invalid credentials.'         => 'Невірні данні.',
+    'Invalid CSRF token.'          => 'Невірний CSRF токен. Спробуйте обновити сторінку.',
+
     'Workflow - Clients' => 'Робочий процес - Клієнти ',
 
     'Address'     => 'Адреса',
@@ -75,15 +86,11 @@ return array(
 
     'Users'    => 'Користувачі',
     'User'     => 'Користувач',
-    'Username' => 'Логін',
-    'Password' => 'Пароль',
     'Roles'    => 'Ролі користувача',
 
     'ROLE_USER'  => 'Користувач',
     'ROLE_ADMIN' => 'Адміністратор',
+    'ROLE_SUPER_ADMIN' => 'Старший адміністратор',
 
-    'paginator.results'     => 'результат',
-    'confirm_modal.content' => 'Ви впевнені?',
-    'confirm_modal.action'  => 'Підтвердіть',
     'label.null'            => 'немає'
 );

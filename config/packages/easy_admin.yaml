@@ -31,6 +31,7 @@ easy_admin:
                 - { label: 'DistrictTypes', entity: 'DistrictType' }
                 - { label: 'RegionTypes', entity: 'RegionType' }
             - label: 'Users'
+              role: 'ROLE_ADMIN'
               icon: 'users'
               entity: 'User'
     show:
@@ -180,18 +181,19 @@ easy_admin:
             class:  App\Entity\User
             controller: App\Controller\UserController
             list:
+                role: ROLE_ADMIN
                 fields:
                   - username
-            edit:
-                fields:
-                  - username
-                  - { property: 'password', type: 'password' }
-                  - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
             show:
+                role: ROLE_SUPER_ADMIN
                 fields:
                   - username
-            new:
+            form:
                 fields:
                   - username
                   - { property: 'password', type: 'password' }
-                  - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                  - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN' } } }
+            new:
+                role: ROLE_SUPER_ADMIN
+            edit:
+                role: ROLE_SUPER_ADMIN

@@ -64,6 +64,6 @@ class FirmAddress extends AType
 
     public function __toString()
     {
-        return $this->getAddress() . ' is ' . parent::__toString() . ' address for ' . $this->getFirm();
+        return $this->getAddress() . ' (' . parent::__toString() . ') ' . $this->getFirm();
     }
 }

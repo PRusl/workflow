@@ -40,7 +40,8 @@ return array(
     'Owner'        => 'Розташування',
     'Subordinates' => 'Містить елементи',
     'Name'         => 'Найменування',
-    'Public name'  => 'Назва будівлі',
+    'Number'       => 'Номер',
+    'Public name'  => 'Вживана назва',
     'Zip'          => 'Індекс',
     'Show in address' => 'Відображати в адресі',
 

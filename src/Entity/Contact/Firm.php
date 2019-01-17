@@ -19,8 +19,7 @@ class Firm extends AContact
     protected $type = null;
 
     /**
-     * @Assert\NotBlank()
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true)
      */
     protected $code;
 

@@ -110,11 +110,11 @@ easy_admin:
         Building:
             class:  App\Entity\Address\Building
             list:
-                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+                fields: ['zip', 'owner', 'type', { property: 'name', label: 'Number' }, 'publicName', 'subordinates']
             show:
-                fields: ['zip', 'owner', 'type', 'name', 'publicName', 'subordinates']
+                fields: ['zip', 'owner', 'type', { property: 'name', label: 'Number' }, 'publicName', 'subordinates']
             form:
-                fields: ['zip', 'owner', 'type', 'name', 'publicName', { property: 'subordinates', type_options: { by_reference: false } }]
+                fields: ['zip', 'owner', 'type', { property: 'name', label: 'Number' }, 'publicName', { property: 'subordinates', type_options: { by_reference: false } }]
         Street:
             class:  App\Entity\Address\Street
             list:

@@ -26,12 +26,6 @@
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                <div class="checkbox mt-3">
-                    <label>
-                        <input type="checkbox" name="_remember_me"> {% trans %}Remember me{% endtrans %}
-                    </label>
-                </div>
-
                 <div class="text-center">
                     <button class="btn btn-primary mt-3 w-50" type="submit">
                         {% trans %}Sign in{% endtrans %}

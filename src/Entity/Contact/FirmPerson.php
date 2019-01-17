@@ -57,6 +57,6 @@ class FirmPerson extends AType
 
     public function __toString()
     {
-        return $this->getPerson() . ' is ' . parent::__toString() . ' for ' . $this->getFirm();
+        return $this->getPerson() . ' (' . parent::__toString() . ') ' . $this->getFirm();
     }
 }

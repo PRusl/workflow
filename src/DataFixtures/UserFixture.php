@@ -59,12 +59,12 @@ class UserFixture extends Fixture
         return [
             [
                 'name' => 'admin',
-                'roles' => ['User::ROLE_ADMIN'],
+                'roles' => ['ROLE_ADMIN'],
                 'password' => 'admin'
             ],
             [
                 'name' => 'superadmin',
-                'roles' => ['User::ROLE_SUPER_ADMIN'],
+                'roles' => ['ROLE_SUPER_ADMIN'],
                 'password' => 'superadmin'
             ]
         ];
